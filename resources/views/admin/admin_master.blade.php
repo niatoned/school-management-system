@@ -31,10 +31,11 @@
   <!-- Content Wrapper. Contains page content -->
   @yield('admin')
   <!-- /.content-wrapper -->
-  @include('admin.body.footer')
+ 
   <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-  
+
+   @include('admin.body.footer')
 </div>
 <!-- ./wrapper -->
   	
@@ -47,8 +48,11 @@
 	<script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
 	
 	<!-- Sunny Admin App -->
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+    
 	
 	
 </body>
