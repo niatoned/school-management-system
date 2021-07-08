@@ -6,13 +6,13 @@
       <section class="content">
 	    <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add User</h4>
+			  <h4 class="box-title">Edit User</h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{ route('user.store') }}">
+					<form method="post" action="{{ route('user.update', $editData->id) }}">
                     @csrf
 					  <div class="row">
 						<div class="col-12">
@@ -21,39 +21,27 @@
 								<div class="controls">
 									<select name="usertype" id="select" required class="form-control">
 										<option selected="" disabled="" value="">Select Role</option>
-										<option value="admin">Admin</option>
-										<option value="user">User</option>
+										<option value="admin" selected="{{ ($editData->usertype == 'admin') ? 'true' : 'false'}}">Admin</option>
+										<option value="user" selected="{{ ($editData->usertype == 'user') ? 'true' : 'false'}}">User</option>
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<h5>User Name<span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="text" name="name" class="form-control" required data-validation-required-message="This field is required">
+									<input type="text" name="name" value="{{ $editData->name }}" class="form-control" required data-validation-required-message="This field is required">
                                 </div>
 							</div>
 							<div class="form-group">
 								<h5>User Email<span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="email" name="email" class="form-control" required data-validation-required-message="This field is required">
+									<input type="email" name="email" value="{{ $editData->email }}" class="form-control" required data-validation-required-message="This field is required">
                                 </div>
 							</div>
-							<div class="form-group">
-								<h5>User Password<span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="password" name="password" class="form-control" required data-validation-required-message="This field is required">
-                                </div>
-							</div>
-							<!--div class="form-group">
-								<h5>Repeat Password Input Field <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="password" name="password2" data-validation-match-match="password" class="form-control" required>
-                                </div>
-							</div-->
 						</div>
 					  </div>
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit"/>
+							<input type="submit" class="btn btn-rounded btn-info mb-5" value="Update"/>
 						</div>
 					</form>
 

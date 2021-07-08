@@ -7,16 +7,8 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Data Tables</h3>
-					<div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Tables</li>
-								<li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-							</ol>
-						</nav>
-					</div>
+					<h3 class="page-title">User List</h3>
+					
 				</div>
 			</div>
 		</div>
@@ -30,7 +22,7 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title">Users List</h3>
-                  <a href="{{route('users.add')}}" style="float:right" class="btn btn-rounded btn-success mb-5">Add User</a>
+                  <a href="{{route('user.add')}}" style="float:right" class="btn btn-rounded btn-success mb-5">Add User</a>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -52,8 +44,8 @@
 								<td>{{$user->usertype}}</td>
 								<td>{{$user->name}}</td>
 								<td>{{$user->email}}</td>
-								<td><a href="" class="btn btn-info">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a></td>
+								<td><a href="{{ route('user.edit', $user->id) }}" class="btn btn-info">Edit</a>
+                                <a id="delete" href="{{ route('user.delete', $user->id) }}" class="btn btn-danger">Delete</a></td>
 							</tr>
 						@endforeach
 						</tbody>
