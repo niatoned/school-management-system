@@ -1,4 +1,7 @@
-
+@php
+$prefix = Request::route()->getPrefix();
+$route = Route::current()->getName();
+@endphp
 
 <aside class="main-sidebar">
     <!-- sidebar-->
@@ -19,14 +22,14 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">  
 		  
-		<li>
-          <a href="index.html">
+		<li class="{{ ($route == 'dashboard')?'active':'' }}">
+          <a href="{{ route('dashboard') }}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
         </li>  
 		
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/users')?'active':'' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
             <span>Manage Users</span>
@@ -41,7 +44,7 @@
           </ul>
         </li> 
 		  
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/profile')?'active':'' }}">
           <a href="#">
             <i data-feather="mail"></i> <span>Manage Profile</span>
             <span class="pull-right-container">
@@ -50,7 +53,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
-            <li><a href=""><i class="ti-more"></i>Change Password</a></li>
+            <li><a href="{{ route('password.view') }}"><i class="ti-more"></i>Change Password</a></li>
           </ul>
         </li>
 				  

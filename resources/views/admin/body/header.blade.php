@@ -100,7 +100,10 @@
 				  <a href="#">View all</a>
 			  </li>
 			</ul>
-		  </li>	
+		  </li>
+          @php
+          $user = DB::table('users')->where('id', Auth::user()->id)->first();
+          @endphp
 		  
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	

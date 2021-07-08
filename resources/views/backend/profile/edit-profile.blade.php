@@ -13,7 +13,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{ route('user.update', $editData->id) }}">
+					<form method="post" action="{{ route('profile.store') }}" enctype="multipart/form-data">
                     @csrf
 					  <div class="row">
 						<div class="col-12">
@@ -54,10 +54,10 @@
                              <div class="form-group">
 								<h5>User Gender<span class="text-danger"></span></h5>
 								<div class="controls">
-									<select name="usertype" id="select" class="form-control">
+									<select name="gender" id="select" class="form-control">
 										<option selected="" disabled="" value="">Select gender</option>
-										<option value="male" selected="{{ ($editData->usertype == 'male') ? 'true' : 'false'}}">Male</option>
-										<option value="female" selected="{{ ($editData->usertype == 'female') ? 'true' : 'false'}}">Female</option>
+										<option value="male" selected="{{ ($editData->gender == 'male') ? 'true' : 'false'}}">Male</option>
+										<option value="female" selected="{{ ($editData->gender == 'female') ? 'true' : 'false'}}">Female</option>
 									</select>
 								</div>
 							</div>
