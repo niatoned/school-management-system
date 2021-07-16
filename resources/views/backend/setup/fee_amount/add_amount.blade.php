@@ -14,7 +14,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{ route('fee.amount.add') }}">
+					<form method="post" action="{{ route('fee.amount.store') }}">
                     @csrf
 					  <div class="row">
 						<div class="col-12">

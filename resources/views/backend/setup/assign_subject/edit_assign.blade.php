@@ -8,24 +8,24 @@
       <section class="content">
 	    <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Fee Amount</h4>
+			  <h4 class="box-title">Edit Assignment</h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{ route('fee.amount.update', $editData[0]->fee_category_id) }}">
+					<form method="post" action="{{ route('assign.subject.update', $editData[0]->class_id) }}">
                     @csrf
 					  <div class="row">
 						<div class="col-12">
                             <div class="add_item">
                                 <div class="form-group">
-								    <h5>Category<span class="text-danger">*</span></h5>
+								    <h5>Class<span class="text-danger">*</span></h5>
 								    <div class="controls">
 									    <select name="category_id" id="select" required class="form-control">
-										    <option selected="" disabled="" value="">Select Category</option>
-                                            @foreach($fee_categories as $category)
-                                            <option value="{{ $category->id }}" {{($editData['0']->fee_category_id == $category->id)? "selected":""}}>{{ $category->name }}</option>
+										    <option selected="" disabled="" value="">Select Class</option>
+                                            @foreach($classes as $class)
+                                            <option value="{{ $class->id }}" {{($editData['0']->class_id == $class->id)? "selected":""}}>{{ $class->name }}</option>
                                             @endforeach
 									    </select>
 								    </div>
@@ -35,24 +35,40 @@
                                 <div class="delete_whole_extra_items_add" id="delete_whole_extra_items_add">
                                     <div class="row">
 
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
-								                    <h5>Class<span class="text-danger">*</span></h5>
+								                    <h5>Subject<span class="text-danger">*</span></h5>
 								                    <div class="controls">
-									                    <select name="class_id[]" id="select" required class="form-control">
+									                    <select name="subject_id[]" id="select" required class="form-control">
 										                    <option selected="" disabled="" value="">Select Class</option>
-										                    @foreach($classes as $class)
-                                                            <option value="{{ $class->id }}" {{ ($edit->class_id == $class->id)? "selected":"" }}>{{ $class->name }}</option>
+										                    @foreach($subjects as $subject)
+                                                            <option value="{{ $subject->id }}" {{ ($edit->subject_id == $subject->id)? "selected":"" }}>{{ $subject->name }}</option>
                                                             @endforeach
 									                    </select>
 								                    </div>
 							                    </div>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-2">
 					                            <div class="form-group">
-						                            <h5>Fee amount<span class="text-danger">*</span></h5>
+						                            <h5>Full mark<span class="text-danger">*</span></h5>
 						                            <div class="controls ">
-							                            <input type="text" value="{{$edit->amount}}" name="amount[]" class="form-control" required data-validation-required-message="This field is required">
+							                            <input type="text" value="{{$edit->full_mark}}" name="full_mark[]" class="form-control" required data-validation-required-message="This field is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+					                            <div class="form-group">
+						                            <h5>Pass mark<span class="text-danger">*</span></h5>
+						                            <div class="controls ">
+							                            <input type="text" value="{{$edit->pass_mark}}" name="pass_mark[]" class="form-control" required data-validation-required-message="This field is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+					                            <div class="form-group">
+						                            <h5>Full mark<span class="text-danger">*</span></h5>
+						                            <div class="controls ">
+							                            <input type="text" value="{{$edit->subjective_mark}}" name="subjective_mark[]" class="form-control" required data-validation-required-message="This field is required">
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,24 +106,40 @@
         <div class="delete_whole_extra_items_add" id="delete_whole_extra_items_add">
             <div class="form_row">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="form-group">
-							<h5>Class<span class="text-danger">*</span></h5>
+							<h5>Subject<span class="text-danger">*</span></h5>
 							<div class="controls">
-								<select name="class_id[]" id="select" required class="form-control">
-									<option selected="" disabled="" value="">Select Class</option>
-									@foreach($classes as $class)
-                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
+								<select name="subject_id[]" id="select" required class="form-control">
+									<option selected="" disabled="" value="">Select Subject</option>
+									@foreach($subjects as $subject)
+                                    <option value="{{ $subject->id }}">{{ $subject->name }}</option>
                                     @endforeach
 								</select>
 							</div>
 						</div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-2">
 					    <div class="form-group">
-						    <h5>Fee amount<span class="text-danger">*</span></h5>
+						    <h5>Full mark<span class="text-danger">*</span></h5>
 						    <div class="controls ">
-							    <input type="text" name="amount[]" class="form-control" required data-validation-required-message="This field is required">
+							    <input type="text" name="full_mark[]" class="form-control" required data-validation-required-message="This field is required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+					    <div class="form-group">
+						    <h5>Pass mark<span class="text-danger">*</span></h5>
+						    <div class="controls ">
+							    <input type="text" name="pass_mark[]" class="form-control" required data-validation-required-message="This field is required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+					    <div class="form-group">
+						    <h5>Subjective mark<span class="text-danger">*</span></h5>
+						    <div class="controls ">
+							    <input type="text" name="subjective_mark[]" class="form-control" required data-validation-required-message="This field is required">
                             </div>
                         </div>
                     </div>
