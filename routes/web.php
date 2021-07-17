@@ -13,6 +13,7 @@ use App\Http\Controllers\backend\setup\FeeAmountController;
 use App\Http\Controllers\backend\setup\ExamTypeController;
 use App\Http\Controllers\backend\setup\SchoolSubjectController;
 use App\Http\Controllers\backend\setup\AssignSubjectController;
+use App\Http\Controllers\backend\setup\DesignationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,7 +127,15 @@ Route::prefix('setups')->group(function(){
     Route::get('/assign/subject/edit/{class_id}', [AssignSubjectController::class, 'AssignSubjectEdit'])->name('assign.subject.edit');
     Route::post('/assign/subject/update/{class_id}', [AssignSubjectController::class, 'AssignSubjectUpdate'])->name('assign.subject.update');
     Route::get('/assign/subject/details/{id}', [AssignSubjectController::class, 'AssignSubjectDetails'])->name('assign.subject.details');
-    
+
+    //Designation routes
+    Route::get('/Designation/view', [DesignationController::class, 'DesignationView'])->name('designation.view');
+    Route::get('/Designation/add', [DesignationController::class, 'DesignationAdd'])->name('designation.add');
+    Route::post('/Designation/store', [DesignationController::class, 'DesignationStore'])->name('designation.store');
+    Route::get('/Designation/delete/{id}', [DesignationController::class, 'DesignationDelete'])->name('designation.delete');
+    Route::get('/Designation/edit/{id}', [DesignationController::class, 'DesignationEdit'])->name('designation.edit');
+    Route::post('/Designation/update/{id}', [DesignationController::class, 'DesignationUpdate'])->name('designation.update');
+
 });
 
 
